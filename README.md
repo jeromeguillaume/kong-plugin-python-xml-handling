@@ -135,15 +135,15 @@ Use request defined at step #3, **remove ```<a>5</a>```** => there is an error b
 The plugin applies a XSLT Transformation on XML request **after** the XSD Validation.
 In this example we **change the Tag name from ```<Subtract>...</Subtract>```** (present in the request) **to ```<Add>...</Add>```**.
 
-Configure the plugin with:
+Add the plugin ```xml-request-3-transform-xslt-after``` and configure the plugin with:
 - ```XsltTransform``` property with no value
 
-**Without XSLT**: Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```-2```
+**Without XSLT**: Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```-3```
 ```xml
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" ...>
   <soap:Body>
     <SubtractResponse xmlns="http://tempuri.org/">
-      <SubtractResult>-2</SubtractResult>
+      <SubtractResult>-3</SubtractResult>
     </SubtractResponse>
   </soap:Body>
 </soap:Envelope>
@@ -153,17 +153,19 @@ Configure the plugin with:
 - ```XsltTransform``` property with this XSLT definition:
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:template match="@*|node()">
+    <xsl:output omit-xml-declaration="yes" indent="yes"/>
+    <xsl:strip-space elements="*"/>
+    <xsl:template match="node()|@*">
         <xsl:copy>
-            <xsl:apply-templates select="@*|node()" />
+            <xsl:apply-templates select="node()|@*"/>
         </xsl:copy>
-    </xsl:template>
+    </xsl:template>   
     <xsl:template match="//*[local-name()='Subtract']">
        <Add xmlns="http://tempuri.org/"><xsl:apply-templates select="@*|node()" /></Add>
    </xsl:template>
 </xsl:stylesheet>
 ```
-**With XSLT**: Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```12```:
+**With XSLT**: Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```13```:
 ```xml
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" ...>
   <soap:Body>
