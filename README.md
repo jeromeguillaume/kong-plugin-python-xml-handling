@@ -222,10 +222,10 @@ Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subt
 The plugin applies a XSLT Transformation on XML response **before** the XSD Validation.
 In this example the XSLT **changes the Tag name from ```<result>...</result>```** (present in the response) **to ```<KongResult>...</KongResult>```**.
 
-Add ```xml-response-3-transform-xslt-after```   plugin with default parameters
-Add ```xml-response-2-validate-xsd```           plugin with default parameters
-Add ```xml-response-1-transform-xslt-before```  plugin and configure the plugin with:
-- ```XsltTransform``` property with this XSLT definition:
+- Add ```xml-response-3-transform-xslt-after```   plugin with default parameters
+- Add ```xml-response-2-validate-xsd```           plugin with default parameters
+- Add ```xml-response-1-transform-xslt-before```  plugin and configure the plugin with:
+  - ```XsltTransform``` property with this XSLT definition:
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="@*|node()">
