@@ -35,7 +35,7 @@ docker build -t kong-gateway-xml-handling .
 ./start-kong.sh
 ```
 
-## How configure and cest ```calcWebService/Calc.asmx``` Service in Kong
+## How configure and test ```calcWebService/Calc.asmx``` Service in Kong
 1) Create a Kong Service named ```calcWebService``` with this URL: https://ecs.syr.edu/faculty/fawcett/Handouts/cse775/code/calcWebService/Calc.asmx.
 This simple backend Web Service adds 2 numbers.
 
