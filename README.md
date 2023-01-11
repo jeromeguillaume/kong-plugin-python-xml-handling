@@ -205,8 +205,8 @@ Open ```xml-request-3-transform-xslt-after```plugin and configure the plugin wit
    </xsl:template>
 </xsl:stylesheet>
 ```
-Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>```. The expected result is ```13```. The new Route (to ```websrv.cs.fsu.edu```) makes a slightly different response:
-- SOAP tag are in capital letter ```SOAP-ENV:Envelope>``` instead of ```<soap:Envelope>```
+Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>```. The expected result is ```13```. The new Route (to ```websrv.cs.fsu.edu```) sends a slightly different response:
+- SOAP tag are in capital letter: ```<SOAP-ENV:Envelope>``` instead of ```<soap:Envelope>```
 - Namespace is injected: ```xmlns:ns="urn:calc"```
 ```xml
 
