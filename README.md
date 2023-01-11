@@ -43,7 +43,6 @@ This simple backend Web Service adds 2 numbers.
 ```
 http POST http://localhost:8000/calcWebService \
 Content-Type:"text/xml; charset=utf-8" \
-SOAPAction: "http://tempuri.org/Add" \
 --raw "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
 xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">
