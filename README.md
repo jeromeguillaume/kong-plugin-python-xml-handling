@@ -271,3 +271,45 @@ Configure ```xml-response-2-validate-xsd``` plugin with:
   </xs:complexType>
 </xs:schema>
 ```
+### Example #7: Response | ```XSLT TRANSFORMATION - AFTER XSD```:  transforming the SOAP response to a XML response
+In this example the XSLT **removes all <soap> tags** to convert the response from SOAP to XML
+Configure ```xml-response-3-transform-xslt-after``` plugin with:
+- ```XsltTransform``` property with this value:
+```xml
+<xsl:stylesheet version="1.0" 
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+exclude-result-prefixes="soapenv">
+
+<xsl:strip-space elements="*"/>
+<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+
+<!-- remove all elements in the soapenv namespace -->
+<xsl:template match="soapenv:*">
+    <xsl:apply-templates select="node()"/>
+</xsl:template>
+
+<!-- for the remaining elements (i.e. elements in the default namespace) ... -->
+<xsl:template match="*">
+    <!-- ... create a new element with similar name in no-namespace -->
+    <xsl:element name="{local-name()}">
+        <xsl:apply-templates select="@*|node()"/>
+    </xsl:element>
+</xsl:template>
+
+<!-- convert attributes to elements -->
+<xsl:template match="@*">
+    <xsl:element name="{local-name()}">
+        <xsl:value-of select="." />
+    </xsl:element>
+</xsl:template>
+
+</xsl:stylesheet>
+```
+Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<addResponse>
+  <KongResult>13</KongResult>
+</addResponse>
+```
