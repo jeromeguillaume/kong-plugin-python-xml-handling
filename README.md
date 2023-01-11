@@ -252,9 +252,9 @@ Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subt
 ```xml
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" ... xmlns:ns="urn:calc">
   <SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-    <ns:addResponse>
+    <addResponse>
       <KongResult>13</KongResult>
-    </ns:addResponse>
+    </addResponse>
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 ```
