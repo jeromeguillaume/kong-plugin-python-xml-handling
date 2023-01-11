@@ -234,11 +234,11 @@ In this example the XSLT **changes the Tag name from ```<result>...</result>```*
     <xsl:copy>
       <xsl:apply-templates select="@*|node()" />
     </xsl:copy>
-    </xsl:template>
-    <xsl:template match="//*[local-name()='addResponse']">
-      <addResponse>
-        <xsl:apply-templates select="@*|node()" />
-      </addResponse>
+  </xsl:template>
+  <xsl:template match="//*[local-name()='addResponse']">
+    <addResponse>
+      <xsl:apply-templates select="@*|node()" />
+    </addResponse>
   </xsl:template>
   <xsl:template match="//*[local-name()='result']">
     <KongResult><xsl:apply-templates select="@*|node()" /></KongResult>
