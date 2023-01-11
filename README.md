@@ -67,7 +67,7 @@ The expected result is ```12```:
 ```
 ### Example #1: Request | ```XSLT TRANSFORMATION - BEFORE XSD```: adding a Tag in XML request of ```calcWebService```  by using XSLT 
 
-The plugin applies a XSLT Transformation on XML request.
+The plugin applies a XSLT Transformation on XML request **before** the XSD Validation.
 In this example the XSLT **adds the value ```<b>8</b>```** that will be not present in the request.
 
 Add the plugin ```xml-request-1-transform-xslt-before``` and configure the plugin with:
@@ -112,6 +112,13 @@ Add the plugin ```xml-request-2-validate-xsd``` and configure the plugin with:
       <xs:element type="xs:integer" name="b" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:element name="Subtract" type="tem:SubtractType" xmlns:tem="http://tempuri.org/"/>
+  <xs:complexType name="SubtractType">
+    <xs:sequence>
+      <xs:element type="xs:integer" name="a" minOccurs="1"/>
+      <xs:element type="xs:integer" name="b" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>
 ```
 
@@ -124,8 +131,8 @@ Use request defined at step #3, **remove ```<a>5</a>```** => there is an error b
 <faultstring>XSD validation failed: Element '{http://tempuri.org/}b': This element is not expected. Expected is ( {http://tempuri.org/}a ). (<string>, line 0)</faultstring>
 ```
 
-### Example #2: renaming a Tag in XML request of ```calcWebService``` by using XSLT
-The plugin applies a XSLT Transformation on XML request.
+### Example #3: Request | ```XSLT TRANSFORMATION - AFTER XSD```:  renaming a Tag in XML request of ```calcWebService``` by using XSLT
+The plugin applies a XSLT Transformation on XML request **after** the XSD Validation.
 In this example we **change the Tag name from ```<Subtract>...</Subtract>```** (present in the request) **to ```<Add>...</Add>```**.
 
 Configure the plugin with:
