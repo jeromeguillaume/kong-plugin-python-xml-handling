@@ -17,7 +17,6 @@ The plugins handle the XML **Request** and the XML **Response** in this order:
 Each handling is optional, except the ```XSLT TRANSFORMATION - AFTER XSD``` of the Response.
 In case of misconfiguration the Plugin sends to the consumer an HTTP 500 Internal Server Error ```<soap:Fault>``` (with the error detailed message)
 
-All plugins can be configured by defining an execution pipeline.
 ![Alt text](/images/Pipeline-Kong-xml-handling.png?raw=true "Kong - XML execution pipeline")
 
 ## How deploy XML Request Handling plugin
