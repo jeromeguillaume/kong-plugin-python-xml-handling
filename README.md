@@ -12,9 +12,9 @@ The plugins handle the XML **Request** and the XML **Response** in this order:
 **Response**:
 1) ```XSLT TRANSFORMATION - BEFORE XSD```: Transform the XML response before step #2
 2) ```XSD VALIDATION```: Validate the XML response against its XSD schema
-3) ```XSLT TRANSFORMATIOn - AFTER XSD```:  Transform the XML response after step #2
+3) ```XSLT TRANSFORMATION - AFTER XSD```:  Transform the XML response after step #2
 
-Each handling is optional, except the ```TRANSFORM AFTER XSD``` of Response.
+Each handling is optional, except the ```XSLT TRANSFORMATION - AFTER XSD``` of the Response.
 In case of misconfiguration the Plugin sends to the consumer an HTTP 500 Internal Server Error ```<soap:Fault>``` (with the error detailed message)
 
 ## How deploy XML Request Handling plugin
