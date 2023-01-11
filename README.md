@@ -222,8 +222,11 @@ Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subt
 ```
 ### Example #5: Response | ```XSLT TRANSFORMATION - BEFORE XSD```: changing a Tag name in XML response by using XSLT
 The plugin applies a XSLT Transformation on XML response **before** the XSD Validation.
-In this example the XSLT **changes the Tag name from ```<result>...</result>```** (present in the response) **to ```<KongResult>...</KongResult>```**.
+In this example the XSLT **changes the Tag names**:
+-  from ```<ns:addResponse>...</ns:addResponse>``` (present in the response) to **```<addResponse>...</addResponse>```**
+-  from ```<result>...</result>``` (present in the response) to **```<KongResult>...</KongResult>```**
 
+Configure plugins:
 - Add ```xml-response-3-transform-xslt-after```   plugin with default parameters
 - Add ```xml-response-2-validate-xsd```           plugin with default parameters
 - Add ```xml-response-1-transform-xslt-before```  plugin and configure the plugin with:
