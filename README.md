@@ -17,6 +17,9 @@ The plugins handle the XML **Request** and the XML **Response** in this order:
 Each handling is optional, except the ```XSLT TRANSFORMATION - AFTER XSD``` of the Response.
 In case of misconfiguration the Plugin sends to the consumer an HTTP 500 Internal Server Error ```<soap:Fault>``` (with the error detailed message)
 
+All plugins can be configured by defining an execution pipeline.
+![Alt text](/images/Pipeline-Kong-xml-handling.png?raw=true "Kong - XML execution pipeline")
+
 ## How deploy XML Request Handling plugin
 1) Build a new Docker 'Kong Gateway' image with Python dependencies and the plugin code
 
@@ -32,8 +35,7 @@ docker build -t kong-gateway-xml-handling .
 ./start-kong.sh
 ```
 
-## How configure ```calcWebService/Calc.asmx``` Service in Kong
-### Create a Kong Service and route
+## How configure and cest ```calcWebService/Calc.asmx``` Service in Kong
 1) Create a Kong Service named ```calcWebService``` with this URL: https://ecs.syr.edu/faculty/fawcett/Handouts/cse775/code/calcWebService/Calc.asmx.
 This simple backend Web Service adds 2 numbers.
 
