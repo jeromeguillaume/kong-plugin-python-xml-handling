@@ -115,7 +115,7 @@ Add the plugin ```xml-request-2-validate-xsd``` and configure the plugin with:
 </xs:schema>
 ```
 
-Use request defined at step #3, **change** ```<soap:Envelope>``` by ```<soap:EnvelopeKong>``` and ```</soap:Envelope>``` by ```</soap:EnvelopeKong>``` => Kong says: 
+Use request defined at step #3, **change** ```<soap:Envelope>``` by **```<soap:EnvelopeKong>```** and ```</soap:Envelope>``` by **```</soap:EnvelopeKong>```** => Kong says: 
 ```xml
 <faultstring>XSD validation failed: Element '{http://schemas.xmlsoap.org/soap/envelope/}EnvelopeKong': No matching global declaration available for the validation root. (<string>, line 0)</faultstring>
 ```
