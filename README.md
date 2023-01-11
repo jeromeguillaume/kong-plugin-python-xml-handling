@@ -32,7 +32,7 @@ docker build -t kong-gateway-xml-handling .
 ./start-kong.sh
 ```
 
-## How test XML Handling plugins with ```calcWebService/Calc.asmx```
+## How configure ```calcWebService/Calc.asmx``` Service in Kong
 ### Create a Kong Service and route
 1) Create a Kong Service named ```calcWebService``` with this URL: https://ecs.syr.edu/faculty/fawcett/Handouts/cse775/code/calcWebService/Calc.asmx.
 This simple backend Web Service adds 2 numbers.
@@ -65,6 +65,8 @@ The expected result is ```12```:
   </soap:Body>
 </soap:Envelope>
 ```
+
+## How test XML Handling plugins with ```calcWebService/Calc.asmx```
 ### Example #1: Request | ```XSLT TRANSFORMATION - BEFORE XSD```: adding a Tag in XML request by using XSLT 
 
 The plugin applies a XSLT Transformation on XML request **before** the XSD Validation.
@@ -227,17 +229,21 @@ In this example the XSLT **changes the Tag name from ```<result>...</result>```*
 - Add ```xml-response-1-transform-xslt-before```  plugin and configure the plugin with:
   - ```XsltTransform``` property with this XSLT definition:
 ```xml
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:template match="@*|node()">
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()" />
-        </xsl:copy>
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="@*|node()">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" />
+    </xsl:copy>
     </xsl:template>
-    <xsl:template match="//*[local-name()='result']">
-       <KongResult><xsl:apply-templates select="@*|node()" /></KongResult>
-   </xsl:template>
-</xsl:stylesheet>
-```
+    <xsl:template match="//*[local-name()='addResponse']">
+      <addResponse>
+        <xsl:apply-templates select="@*|node()" />
+      </addResponse>
+  </xsl:template>
+  <xsl:template match="//*[local-name()='result']">
+    <KongResult><xsl:apply-templates select="@*|node()" /></KongResult>
+  </xsl:template>
+</xsl:stylesheet>```
 Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```<KongResult>13</KongResult>```:
 ```xml
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" ... xmlns:ns="urn:calc">
@@ -247,4 +253,18 @@ Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subt
     </ns:addResponse>
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
+```
+### Example #6: Response | ```XSD VALIDATION```: checking validity of XML response against its XSD schema
+Configure ```xml-response-2-validate-xsd``` plugin with:
+- ```XsdApiSchema``` property with this value:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="addResponse" type="addResponseType"/>
+  <xs:complexType name="addResponseType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="KongResult"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
 ```
