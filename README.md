@@ -185,7 +185,7 @@ Note: the ```websrv.cs.fsu.edu``` introduces a new XML NameSpace so we have to c
 Add a Kong ```Upstream``` named ```websrv.cs.fsu.edu``` and defines a ```target```with ```websrv.cs.fsu.edu:443``` value. 
 Add ```xml-request-4-route-by-xpath``` plugin and configure the plugin with:
 - ```RouteToPath``` property with the value ```/~engelen/calcserver.cgi```
-- ```RouteToUpstream```property with the value ```websrv.cs.fsu.edu````
+- ```RouteToUpstream```property with the value ```websrv.cs.fsu.edu```
 - ```XPath``` property with the value ```.//{http://tempuri.org/}a```
 - ```XPathCondition``` property with the value ```5```
 
