@@ -70,7 +70,7 @@ The expected result is ```12```:
 The plugin applies a XSLT Transformation on XML request **before** the XSD Validation.
 In this example the XSLT **adds the value ```<b>8</b>```** that will be not present in the request.
 
-Add the plugin ```xml-request-1-transform-xslt-before``` and configure the plugin with:
+Add ```xml-request-1-transform-xslt-before``` plugin and configure the plugin with:
 - ```XsltTransform``` property with this XSLT definition:
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -101,7 +101,7 @@ Use request defined at step #3, remove ```<b>7</b>```, the expected result is no
 Calling incorrectly ```calcWebService``` and detecting issue in the Request with XSD schema. 
 We call incorrectly the Service by injecting a SOAP error; the plugin detects it, sends an error message to the Consumer and Kong doesn't call the SOAP backend API.
 
-Add the plugin ```xml-request-2-validate-xsd``` and configure the plugin with:
+Add ```xml-request-2-validate-xsd``` plugin and configure the plugin with:
 - ```XsdApiSchema``` property with this value:
 ```xml
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -135,7 +135,7 @@ Use request defined at step #3, **remove ```<a>5</a>```** => there is an error b
 The plugin applies a XSLT Transformation on XML request **after** the XSD Validation.
 In this example we **change the Tag name from ```<Subtract>...</Subtract>```** (present in the request) **to ```<Add>...</Add>```**.
 
-Add the plugin ```xml-request-3-transform-xslt-after``` and configure the plugin with:
+Add ```xml-request-3-transform-xslt-after``` plugin and configure the plugin with:
 - ```XsltTransform``` property with no value
 
 **Without XSLT**: Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```-3```
@@ -149,7 +149,7 @@ Add the plugin ```xml-request-3-transform-xslt-after``` and configure the plugin
 </soap:Envelope>
 ```
 
-Configure the plugin with:
+Configure ```xml-request-3-transform-xslt-after``` plugin with:
 - ```XsltTransform``` property with this XSLT definition:
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
