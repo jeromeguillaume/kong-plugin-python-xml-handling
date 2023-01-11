@@ -296,7 +296,7 @@ class XMLHandling:
     def RouteByXPath (self, kong, request, XPath, XPathCondition, RouteToUpstream, RouteToPath):
         kong.log.notice("XPathRouting *** BEGIN ***")
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-        # If we don't have the same number of parameters of 'XPathReplace' and 'XPathReplaceValue' we return an Error
+        # If there is no XPah, nor Routing nor Condition the function returns and does nothing
         if XPath == "" or XPathCondition == "" or RouteToUpstream == "":
             kong.log.notice("No routing rule configured, so there is nothing to do")
             return                                                                                                                                                                                                                                                                                                                                                                                                                
