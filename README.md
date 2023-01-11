@@ -243,7 +243,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="//*[local-name()='result']">
     <KongResult><xsl:apply-templates select="@*|node()" /></KongResult>
   </xsl:template>
-</xsl:stylesheet>```
+</xsl:stylesheet>
+```
 Use request defined at step #3, rename the Tag ```<Add>...</Add>```, to ```<Subtract>...</Subtract>``` the expected result is ```<KongResult>13</KongResult>```:
 ```xml
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" ... xmlns:ns="urn:calc">
