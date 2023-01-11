@@ -272,7 +272,7 @@ Configure ```xml-response-2-validate-xsd``` plugin with:
 </xs:schema>
 ```
 ### Example #7: Response | ```XSLT TRANSFORMATION - AFTER XSD```:  transforming the SOAP response to a XML response
-In this example the XSLT **removes all <soap> tags** and converts the response from **SOAP to XML**.
+In this example the XSLT **removes all <soap> tags** and converts the response **from SOAP to XML**.
 
 Configure ```xml-response-3-transform-xslt-after``` plugin with:
 - ```XsltTransform``` property with this value:
