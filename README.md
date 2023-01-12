@@ -12,7 +12,7 @@ The plugins handle the XML **Request** and the XML **Response** in this order:
 
 **Response**:
 
-5) ```XSLT TRANSFORMATION - BEFORE XSD```: Transform the XML response before step #6
+5)  ```XSLT TRANSFORMATION - BEFORE XSD```: Transform the XML response before step #6
 6) ```XSD VALIDATION```: Validate the XML response against its XSD schema
 7) ```XSLT TRANSFORMATION - AFTER XSD```:  Transform the XML response after step #6
 
