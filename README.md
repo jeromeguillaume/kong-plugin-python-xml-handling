@@ -4,12 +4,14 @@ It's a set of Kong plugins which are developed in Python and use the Python libr
 The plugins handle the XML **Request** and the XML **Response** in this order:
 
 **Request**:
+
 1) ```XSLT TRANSFORMATION - BEFORE XSD```: Transform the XML request with XSLT (XSLTransformation) before XSD Validation (step #2)
 2) ```XSD VALIDATION```: Validate XML request against its XSD schema
 3) ```XSLT TRANSFORMATION - AFTER XSD```: Transform the XML request with XSLT (XSLTransformation) after XSD Validation (step #2)
 4) ```ROUTING BY XPATH```: change the Route of the request to a different hostname and path depending of XPath condition
 
 **Response**:
+
 5) ```XSLT TRANSFORMATION - BEFORE XSD```: Transform the XML response before step #6
 6) ```XSD VALIDATION```: Validate the XML response against its XSD schema
 7) ```XSLT TRANSFORMATION - AFTER XSD```:  Transform the XML response after step #6
