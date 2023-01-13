@@ -21,6 +21,9 @@ In case of misconfiguration the Plugin sends to the consumer an HTTP 500 Interna
 
 ![Alt text](/images/Pipeline-Kong-xml-handling.png?raw=true "Kong - XML execution pipeline")
 
+![Alt text](/images/Kong-Manager.png?raw=true "Kong - Manager")
+
+
 ## How deploy XML Request Handling plugin
 1) Build a new Docker 'Kong Gateway' image with Python dependencies and the plugin code
 
