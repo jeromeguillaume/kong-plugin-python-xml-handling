@@ -13,6 +13,7 @@ USER root
 RUN apk update && \
     apk add python3 py3-pip python3-dev musl-dev libffi-dev gcc g++ file make
 RUN PYTHONWARNINGS=ignore pip3 install kong-pdk lxml
+COPY /plugins /usr/local/kong/python/
 
 # DEBIAN
 #RUN apt-get update && \
